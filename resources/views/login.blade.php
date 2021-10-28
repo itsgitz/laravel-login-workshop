@@ -8,6 +8,13 @@
 <body>
     <div class="container">
         <h1>Login page</h1>
+
+        @error('email')
+        <div class="error">
+           <p>{{ $message }}</p> 
+        </div>
+        @enderror
+
         <form method="post" action="{{ route('login') }}">
             @csrf
             <div>
