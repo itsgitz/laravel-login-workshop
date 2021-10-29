@@ -12,5 +12,6 @@
         <p>{{ $u->name }} | {{ $u->email }}</p>
         @endforeach
     </div>
+    <div><a href="{{ route('home') }}">Home</a></div>
 </body>
 </html>
