@@ -10,11 +10,6 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
     public function index()
     {
         return view('login');
@@ -36,5 +31,14 @@ class LoginController extends Controller
         return back()->withErrors([
             'email' => 'Invalid credential',
         ]);
+    }
+
+    public function logout(Request $r)
+    {
+        Auth::logout();
+        $r->session()->invalidate();
+        $r->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
