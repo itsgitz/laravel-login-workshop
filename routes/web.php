@@ -19,8 +19,15 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/users', [UserController::class, 'index'])->name('users');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'auth'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])
+    ->middleware('guest') 
+    ->name('login');
+Route::post('/login', [LoginController::class, 'auth'])
+    ->middleware('guest');
+
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
 
 Route::get('/hello/{name}', function ($name) {
     return 'Hello ' . $name . ', nice to meet you!';
