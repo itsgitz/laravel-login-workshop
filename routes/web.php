@@ -17,11 +17,14 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users', [UserController::class, 'index'])
+    ->middleware('auth')
+    ->name('users');
 
 Route::get('/login', [LoginController::class, 'index'])
     ->middleware('guest') 
     ->name('login');
+
 Route::post('/login', [LoginController::class, 'auth'])
     ->middleware('guest');
 
