@@ -11,7 +11,9 @@
         @foreach ($users as $u)
         <p>{{ $u->name }} | {{ $u->email }}</p>
         @endforeach
+        <div>
+            <a href="{{ route('home') }}">Home</a>
+        </div>
     </div>
-    <div><a href="{{ route('home') }}">Home</a></div>
 </body>
 </html>
